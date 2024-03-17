@@ -9,7 +9,7 @@ imputi = ""
 estados = input().split()
 
 alfabetos = input().split()
-alfabetos.append("vario")
+alfabetos.append("vazio")
 
 primeiro_estado = input()
 
