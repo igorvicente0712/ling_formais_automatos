@@ -26,7 +26,12 @@ for i in range(len(estados)):
 
 imputi = input()
 caminhos = [primeiro_estado]
+if transicoes[primeiro_estado]["vazio"] != "vazio":
+    for estado in transicoes[primeiro_estado]["vazio"].split():
+        caminhos.append(estado)
+
 print(caminhos)
+
 for char in imputi:
     print(char)
     if char not in alfabetos:
@@ -39,12 +44,12 @@ for char in imputi:
         # print(n_caminho, caminhos[n_caminho], char)
         proximos = transicoes[caminhos[n_caminho]][char].split(",")
         # proximos_vazio = transicoes[caminhos[n_caminho]]["vazio"].split(",")
-        # for estado in proximos_vazio:
-        #     if estado == "vazio":
-        #         break
-        #     else:
-        #         proximos.append(transicoes[estado][char])
-        # for estado in proximos:
+        for estado in proximos:
+            if estado == "vazio":
+                break
+            if transicoes[estado]["vazio"] != "vazio":
+                proximos.append(transicoes[estado]["vazio"])
+        # print(proximos)
         if proximos[0] == "vazio":
             del caminhos[n_caminho]
         else:
